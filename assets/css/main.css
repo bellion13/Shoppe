@@ -438,18 +438,29 @@
     align-items: center;
     margin: 0 8px;
 }
-
+.header__mobile-search {
+    padding: 0 12px;
+}
+.header__mobile-search-icon {
+    font-size: 2.6rem;
+    color: var(--white-color);
+    cursor: pointer;
+}
 .header__logo {
     width: 200px;
 }
 .header__logo-link {
     text-decoration: none;
     color: transparent;
+    display: block;
+    line-height: 0;
 }
 .header__logo-img {
     width: 160px;
 }
-
+.header__search-checkbox:checked ~ .header__search {
+    display: flex;
+}
 .header__search {
     flex: 1;
     height: 40px;
@@ -552,6 +563,7 @@
     padding-left: 0;
     display: none;
     animation: fadeIn ease 0.3s;
+    z-index: 1;
 }
 
 .header__search-option::before {
@@ -628,9 +640,11 @@
 .header__cart {
     width: 150px;
     text-align: center;
+    
 }
 
 .header__cart-wrap {
+    -webkit-tap-hightlight-color: transparent;
     position: relative;
 
 }
@@ -717,7 +731,7 @@
 
 .header__cart-list-item {
     padding-left: 0;
-    height: 30vh;
+    max-height: 30vh;
     overflow-y: auto;
 }
 
@@ -812,7 +826,47 @@
     background-color: #ff774e;
 }
 
-
+/* mobile tablel */
+.header__sort-bar {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    left: 0;
+    height: 46px;
+    background-color: var(--white-color);
+    margin: 0;
+    /* display: flex; */
+    padding-left: 0;
+    border-top: 1px solid #c2b9b9;
+    border-bottom: 1px solid #c2b9b9;
+    display: none;
+}
+.header__sort-item {
+    list-style: none;
+    flex: 1;
+}
+.header__sort-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    display: block;
+    height: 100%;
+    line-height: 46px;
+    text-align: center;
+}
+.header__sort-link::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    height: 60%;
+    border-left: 1px solid #e5e5e5;
+    transform: translateY(-50%);
+}
+.header__sort-item--active .header__sort-link {
+    color: var(--primary-color);
+}
 /* danh muc phần sản phẩm */
 .app__container {
     background-color: #f5f5f5;
@@ -870,7 +924,54 @@
     right: -4px;
     color: var(--primary-color);
 }
+.mobile-category {
+    display: none;
+}
+.mobile-category__list {
+    display: flex;
+    padding-left: 0;
+    max-width: 100%;
+    overflow-x: auto;
 
+
+}
+.mobile-category__list::-webkit-scrollbar {
+    display: none;
+}
+.mobile-category__item {
+    list-style: none;
+    flex-shrink: 0;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.mobile-category__item:nth-of-type(3n + 1) {
+    background-color: #87afd8;
+}
+.mobile-category__item:nth-of-type(3n + 2) {
+    background-color: #76c9bd;
+}
+.mobile-category__item:nth-of-type(3n + 3) {
+    background-color: #88cf81;
+}
+.mobile-category__link {
+    --line-height: 2rem;
+    color: var(--white-color);
+    display: block;
+    text-decoration: none;
+    font-size: 1.4rem;
+    line-height: var(--line-height);
+    text-align: center;
+    height: calc(var(--line-height) * 2);
+    overflow: hidden;
+    width: 110px;
+    font-weight: 100;
+    padding: 0 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    user-select: none;
+    -webkit-tap-hightlight-color: transparent;
+}
 /* home sản phẩm */
 .home__filter {
     background-color: #EDEDED;
@@ -924,6 +1025,7 @@
     background-color: var(--white-color);
     margin: 0;
     display: none;
+    z-index: 1;
 }
 .select-input__item {
     list-style: none;
@@ -1064,6 +1166,7 @@ i.home-product-item__like-icon-fill {
     font-size: 1rem;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+
 }
 .home-product-item__favourite::before {
     content: "";
@@ -1072,6 +1175,7 @@ i.home-product-item__like-icon-fill {
     bottom: -3px;
     border-top: 3px solid var(--primary-color);
     border-left: 3px solid transparent;
+
 
 }
 .home-product-item__sale-off {
@@ -1108,6 +1212,7 @@ i.home-product-item__like-icon-fill {
 
 .footer {
     border-top: 3px solid var(--primary-color);
+
 }
 .footer__heading {
     padding-top: 25px;
@@ -1125,7 +1230,6 @@ i.home-product-item__like-icon-fill {
     margin-bottom: 10px;
 }
 .footer-item__link {
-
     text-decoration: none;
     font-size: 1.3rem;
     color: rgba(0,0,0,.54);
